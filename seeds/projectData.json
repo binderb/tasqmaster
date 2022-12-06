@@ -1,17 +1,17 @@
 [
   {
-    "name": "Music Near Me",
-    "description": "A mobile app that will send you notifications whenever a concert is playing in your area.",
+    "name": "Input Task Here",
+    "description": "Task 1",
     "needed_funding": 5000
   },
   {
-    "name": "The Ultimate Tech Quiz",
-    "description": "A web app that will give users 10 new technical questions each day and track their progress in things like programming, cybersecurity, database architecture, and more!",
+    "name": "Input Task 2 Here",
+    "description": "Task 2",
     "needed_funding": 10000
   },
   {
-    "name": "Roll 'Em Up",
-    "description": "A game for Windows and macOS where players move a ball through a series of increasingly challenging mazes.",
+    "name": "Input Task 3 Here",
+    "description": "Task 3",
     "needed_funding": 800
   }
 ]
