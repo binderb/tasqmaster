@@ -1,37 +1,17 @@
 const router = require('express').Router();
-const { Project } = require('../../models');
+const { Project, User, Task } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.post('/', withAuth, async (req, res) => {
+// Get all projects
+router.get('/', async(req, res) => {
   try {
-    const newProject = await Project.create({
-      ...req.body,
-      user_id: req.session.user_id,
+    const projects_data = await Project.findAll({
+      include: [{model: User},{model: Task}]
     });
-
-    res.status(200).json(newProject);
+    const projects = projects_data.map(e => e.get({plain:true}));
+    res.status(200).json(projects);
   } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
-router.delete('/:id', withAuth, async (req, res) => {
-  try {
-    const projectData = await Project.destroy({
-      where: {
-        id: req.params.id,
-        user_id: req.session.user_id,
-      },
-    });
-
-    if (!projectData) {
-      res.status(404).json({ message: 'No project found with this id!' });
-      return;
-    }
-
-    res.status(200).json(projectData);
-  } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(`Internal Server Error: ${err.name}`);
   }
 });
 
