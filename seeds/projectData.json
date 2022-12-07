@@ -1,17 +1,11 @@
 [
   {
-    "name": "Input Task Here",
-    "description": "Task 1",
-    "needed_funding": 5000
+    "title": "Tasqmaster"
   },
   {
-    "name": "Input Task 2 Here",
-    "description": "Task 2",
-    "needed_funding": 10000
+    "title": "Blog"
   },
   {
-    "name": "Input Task 3 Here",
-    "description": "Task 3",
-    "needed_funding": 800
+    "title": "Home Server"
   }
 ]

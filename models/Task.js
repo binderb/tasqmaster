@@ -3,64 +3,70 @@ const sequelize = require("../config/connection");
 
 class Task extends Model {}
 
-Project.init(
+Task.init(
   {
-    name: {
-      type: DataTypes.STRING,
+    id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
+      autoIncrement: true
     },
     title: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
     },
     description: {
       type: DataTypes.STRING,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
     },
-    label_id: {
-      type: DataTypes.STRING,
+    label: {
+      type: DataTypes.ENUM({
+        values: ['mvp','enhancement','bugfix','docs']
+      }),
       allowNull: false,
-      foreignKey: "label_id:",
-      autoIncrement: true,
     },
-    status_id: {
-      type: DataTypes.STRING,
+    status: {
+      type: DataTypes.ENUM({
+        values: ['todo','in progress','done','icebox']
+      }),
       allowNull: false,
-      foreignKey: "status_id",
-      autoIncrement: true,
     },
     user_id: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      foreignKey: "user_id",
-      autoIncrement: true,
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id'
+      }
     },
     assignee_id: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      foreignKey: "assignee_id",
-      autoIncrement: true,
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id'
+      }
     },
     parent_id: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      foreignKey: "parent_id",
-      autoIncrement: true,
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'task',
+        key: 'id'
+      }
     },
+    project_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'project',
+        key: 'id'
+      }
+    }
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "tasks",
+    modelName: "task",
   }
 );
 
-module.exports = Tasks;
+module.exports = Task;
