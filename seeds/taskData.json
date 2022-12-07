@@ -1,0 +1,102 @@
+[
+  {
+    "title": "model",
+    "description": "This is a description of our model.",
+    "parent_id": null,
+    "user_id": 1,
+    "assignee_id": null,
+    "status": "in progress",
+    "label": "mvp",
+    "project_id": 1
+  },
+  {
+    "title": "view",
+    "description": "This is a description of our view.",
+    "parent_id": null,
+    "user_id": 1,
+    "assignee_id": null,
+    "status": "in progress",
+    "label": "mvp",
+    "project_id": 1
+  },
+  {
+    "title": "controller",
+    "description": "This is a description of our controller.",
+    "parent_id": null,
+    "user_id": 1,
+    "assignee_id": null,
+    "status": "in progress",
+    "label": "mvp",
+    "project_id": 1
+  },
+  {
+    "title": "task",
+    "description": "Task table.",
+    "parent_id": 1,
+    "user_id": 1,
+    "assignee_id": null,
+    "status": "in progress",
+    "label": "mvp",
+    "project_id": 1
+  },
+  {
+    "title": "project",
+    "description": "Project table.",
+    "parent_id": 1,
+    "user_id": 1,
+    "assignee_id": null,
+    "status": "in progress",
+    "label": "mvp",
+    "project_id": 1
+  },
+  {
+    "title": "user",
+    "description": "User table.",
+    "parent_id": 1,
+    "user_id": 1,
+    "assignee_id": null,
+    "status": "in progress",
+    "label": "mvp",
+    "project_id": 1
+  },
+  {
+    "title": "project_user",
+    "description": "ProjectUser join table.",
+    "parent_id": 1,
+    "user_id": 1,
+    "assignee_id": null,
+    "status": "in progress",
+    "label": "mvp",
+    "project_id": 1
+  },
+  {
+    "title": "model",
+    "description": "This is a description of our model.",
+    "parent_id": null,
+    "user_id": 1,
+    "assignee_id": null,
+    "status": "in progress",
+    "label": "mvp",
+    "project_id": 2
+  },
+  {
+    "title": "view",
+    "description": "This is a description of our view.",
+    "parent_id": null,
+    "user_id": 1,
+    "assignee_id": null,
+    "status": "in progress",
+    "label": "mvp",
+    "project_id": 2
+  },
+  {
+    "title": "controller",
+    "description": "This is a description of our controller.",
+    "parent_id": null,
+    "user_id": 1,
+    "assignee_id": null,
+    "status": "in progress",
+    "label": "mvp",
+    "project_id": 2
+  }
+]
