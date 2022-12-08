@@ -1,64 +1,72 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+const { withAuthAPI } = require('../../utils/auth');
 
 // Create 1 user
 router.post('/', async (req, res) => {
   try {
-    const userData = await User.create(req.body);
-
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
-
-      res.status(201).json(userData);
+    if (!req.body.username || !req.body.password) {
+      res.status(403).json({message: 'You must supply a username and password!'});
+      return;
+    }
+    const newUserData = await User.create(req.body);
+    req.session.loggedIn = true;
+    req.session.userId = newUserData.id;
+    req.session.username = newUserData.username;
+    await req.session.save(() => {
+      res.status(201).json({message: 'Profile created successfully!'});
     });
+
   } catch (err) {
-    res.status(500).json(`Internal Server Error: ${err.name}`);
+    if (err.name === 'SequelizeUniqueConstraintError') {
+      res.status(403).json({message: 'Username already exists! Please try a different one.'});
+    } else if (err.name === 'SequelizeValidationError') {
+      res.status(403).json({message: 'Your password must be at least 8 characters long!'});
+    } else {
+      res.status(500).json({message: `Internal Server Error: ${err.name}`});
+    }
   }
 });
 
-// Login user
+// Log in user
 router.post('/login', async (req, res) => {
   try {
+    if (!req.body.username || !req.body.password) {
+      res.status(403).json({message: 'You must supply a username and password!'});
+      return;
+    }
+
     const userData = await User.findOne({
-      where: { username: req.body.username }
+      where: {username: req.body.username}
     });
 
     if (!userData) {
-      res.status(403).json({ message: 'Incorrect email or password, please try again.' });
+      res.status(403).json({message: 'Invalid username or password, please try again!'});
       return;
     }
 
     const validPassword = await userData.checkPassword(req.body.password);
-
     if (!validPassword) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+      res.status(403).json({message: 'Invalid username or password, please try again!'});
       return;
     }
-
+    req.session.loggedIn = true;
+    req.session.userId = userData.id;
+    req.session.username = userData.username;
     req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
-      
-      res.redirect("/timesheets/")
-      // res.json({ user: userData, message: 'You are now logged in!' });
+      res.status(200).json({userData, message: 'You are now logged in!'});
     });
-
+  
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json({message: `Internal Server Error: ${err.name}`});
   }
 });
 
-router.post('/logout', (req, res) => {
-  if (req.session.logged_in) {
-    req.session.destroy(() => {
-      res.status(204).end();
-    });
-  } else {
-    res.status(404).end();
-  }
+// Log out user
+router.post('/logout', withAuthAPI, async (req, res) => {
+  req.session.destroy(() => {
+    res.status(204).end();
+  });
 });
 
 module.exports = router;
