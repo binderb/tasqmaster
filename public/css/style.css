@@ -24,4 +24,56 @@ body {
 
 
 
+#headerlinks {
+   float: right;
+   font-weight: bolder;
+   padding-right: 50px;
+   padding-bottom: 20px;
+ 
+}
+
+aside { 
+    margin: 0 10px 0px 0;  
+    float: left;
+    text-align: left;
+    font-size: 12pt;
+    
+}
+
+ h3{
+    color:white;
+    padding-left: 40%;
+ }
+
+li {
+    padding-bottom: 10px;
+}
+
+
+
+
+#Tasks {
+    padding-top: 40px;
+    justify-content: center;
+}
+
+
+
+
+#Tables1 {
+    padding-right: 80px;
+
+		float: left;
+
+
+}
+#Tables2 {
+    width: 900px;
+    border-left: solid thin black;
+    float: left;
+    padding-left: 3%;
+}
+
+
+
 
