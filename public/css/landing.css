@@ -1,0 +1,66 @@
+.header {
+    border: 50px;
+    border-color: black;
+    background-color: rgb(247, 122, 6);
+    padding-bottom: 50px;
+}
+
+#headerlinks {
+   float: right;
+   font-weight: bolder;
+   padding-right: 50px;
+   padding-bottom: 20px;
+ 
+}
+
+aside { 
+			
+    /* width: 300px; */
+    margin: 0 10px 0px 0;
+    /* padding: 10px; */
+    float: left;
+    /* height: 760px; */
+    text-align: left;
+    font-size: 12pt;
+    
+}
+li {
+    padding-bottom: 10px;
+}
+
+
+
+#searching{
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    margin-top: -70px;
+    margin-bottom: 60px;
+    font-weight: bolder;
+}
+
+
+
+#Tasks {
+    padding-top: 40px;
+    justify-content: center;
+}
+
+
+
+
+#Tables1 {
+    padding-right: 80px;
+
+		float: left;
+
+
+}
+#Tables2 {
+    width: 900px;
+    border-left: solid thin black;
+    float: left;
+  
+}
+
+
