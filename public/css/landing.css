@@ -1,28 +1,9 @@
-body {
-    padding: 0%;
-    margin: 0%;
-    background-image: url("./water.jpeg");
-    background-size: cover;
-  }
-
-
-#header {
-    background-color: rgb(29, 28, 28);
-    margin: 0;
-    padding: 10px;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    
+.header {
+    border: 50px;
+    border-color: black;
+    background-color: rgb(8, 8, 8);
+    padding-bottom: 50px;
 }
-
-.headertext {
-    color: rgb(255, 255, 255);
-
-}
-
-
-
 
 #headerlinks {
    float: right;
@@ -73,7 +54,5 @@ li {
     float: left;
     padding-left: 3%;
 }
-
-
 
 
