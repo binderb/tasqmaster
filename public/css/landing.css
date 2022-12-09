@@ -1,7 +1,7 @@
 .header {
     border: 50px;
     border-color: black;
-    background-color: rgb(247, 122, 6);
+    background-color: rgb(8, 8, 8);
     padding-bottom: 50px;
 }
 
@@ -14,32 +14,22 @@
 }
 
 aside { 
-			
-    /* width: 300px; */
-    margin: 0 10px 0px 0;
-    /* padding: 10px; */
+    margin: 0 10px 0px 0;  
     float: left;
-    /* height: 760px; */
     text-align: left;
     font-size: 12pt;
     
 }
 
+ h3{
+    color:white;
+    padding-left: 40%;
+ }
 
 li {
     padding-bottom: 10px;
 }
 
-
-
-#searching{
-    display: flex;
-    justify-content: space-around;
-    color: white;
-    margin-top: -70px;
-    margin-bottom: 60px;
-    font-weight: bolder;
-}
 
 
 
@@ -62,7 +52,7 @@ li {
     width: 900px;
     border-left: solid thin black;
     float: left;
-  
+    padding-left: 3%;
 }
 
 
