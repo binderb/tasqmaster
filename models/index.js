@@ -32,7 +32,8 @@ Task.belongsTo(Project, {
 
 Task.hasOne(Task, {
   foreignKey: 'parent_id',
-  onDelete: 'CASCADE'
+  onDelete: 'CASCADE',
+  as: 'children'
 });
 
 Task.belongsTo(Task, {

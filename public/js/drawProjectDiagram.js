@@ -1,10 +1,12 @@
-async function drawGraph() {
-  const exampleDataResponse = await fetch('./assets/js/exampleData.json');
-  const exampleData = await exampleDataResponse.json();
+async function drawGraph(svgEl,projectID) {
 
-  var svg = d3.select("svg"),
+  const projectDataResponse = await fetch('/api/projects/'+projectID);
+  const projectData = await projectDataResponse.json();
+  console.log(projectData);
+
+  var svg = d3.select(svgEl),
     margin = 20,
-    diameter = +svg.attr("width"),
+    diameter = 500,
     g = svg.append("g").attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
 
   var color = d3.scaleLinear()
@@ -16,8 +18,7 @@ async function drawGraph() {
     .size([diameter - margin, diameter - margin])
     .padding(2);
 
-
-  root = d3.hierarchy(exampleData)
+  root = d3.hierarchy(projectData)
     .sum(function(d) { return d.size; })
     .sort(function(a, b) { return b.value - a.value; });
 
@@ -38,7 +39,7 @@ async function drawGraph() {
     .attr("class", "label")
     .style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
     .style("display", function(d) { return d.parent === root ? "inline" : "none"; })
-    .text(function(d) { return d.data.name; });
+    .text(function(d) { return d.data.title; });
 
   var node = g.selectAll("circle,text");
 
@@ -70,4 +71,4 @@ async function drawGraph() {
   }
 }
 
-drawGraph();
+drawGraph('#svg2',1);
