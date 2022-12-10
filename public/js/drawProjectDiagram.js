@@ -31,11 +31,21 @@ async function drawGraph(svgEl,projectID) {
       return pickColors(d, focus);
     })
     .on("click", function(d) { 
-      if (focus !== d && d.children) {
+      // if (focus.children.includes(d) || focus.parent === d) {
+      //   zoom(d);
+      //   helpers.displayTaskDetails(d.data);
+      //   d3.event.stopPropagation();
+      // } else if (d === focus) {
+      //   helpers.displayTaskDetails(d.data);
+      //   d3.event.stopPropagation();
+      // } else {
+      //   d3.event.stopPropagation();
+      // }
+      if (d.children) {
         zoom(d);
         helpers.displayTaskDetails(d.data);
         d3.event.stopPropagation();
-      } else if (!d.children) {
+      } else {
         helpers.displayTaskDetails(d.data);
         d3.event.stopPropagation();
       }
@@ -68,10 +78,13 @@ async function drawGraph(svgEl,projectID) {
       return function(t) { zoomTo(i(t)); };
     });
 
-    transition.on('end', function() {
-      transition.selectAll("circle")
+    transition.selectAll("circle")
       .attr('class', d => pickClasses(d, focus));
-    });
+
+    // transition.on('end', function() {
+    //   transition.selectAll("circle")
+    //   .attr('class', d => pickClasses(d, focus));
+    // });
   
     transition.selectAll("text")
     .filter(function(d) { return d.parent === focus || this.style.display === "inline"; })
@@ -117,6 +130,8 @@ function pickClasses (d, focus) {
   let nodeClass;
   if (focus.children.includes(d) || focus.parent === d) {
     nodeClass = 'node';
+  } else if (d === focus) {
+    nodeClass = 'node selected';
   } else {
     nodeClass = 'node disabled';
   }

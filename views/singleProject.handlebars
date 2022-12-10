@@ -14,8 +14,11 @@
       </section>
       <section id="section-details" class="col-12 col-md-5 col-lg-4 p-2 py-1 ps-md-1 py-md-0">
         <div id="task-details" class="d-block p-2 bg-dark-glass rounded text-white">
-          <h4 class="p-0 m-0">Task Details:</h4>
-          <p id="task-title">(Task Title)</p>
+          <h4 id="task-title" class="p-0 m-0">{{project.title}}</h4>
+          <div class="p-2">
+            <p id="task-description-label"><b>Description:</b></p>
+            <p id="task-description"><b>{{project.description}}</b></p>
+          </div>
         </div>
       </section>
   </div>

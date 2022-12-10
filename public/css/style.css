@@ -78,6 +78,12 @@ Styles for D3 Display
   pointer-events: none;
 }
 
+.node.selected {
+  /* pointer-events: none; */
+  stroke: #444;
+  stroke-width: 5px;
+}
+
 .node--leaf {
   fill: white;
 }
