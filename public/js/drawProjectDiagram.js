@@ -71,4 +71,5 @@ async function drawGraph(svgEl,projectID) {
   }
 }
 
-drawGraph('#svg2',1);
+const projectID = document.querySelector('#diagram').getAttribute('data-project-id');
+drawGraph('#diagram',projectID);

@@ -1,7 +1,10 @@
+  <section id="project-display">
+  <h3 class="p-0 pt-3 text-center">{{ project.title }}: Task Diagram</h3>
   <div id="flex_container" style="display:flex;justify-content:center;align-items:center;height:100%;">
-    <div id="svg_container" style="display:block;width:50%;margin-top:20px;">
-      <svg id="svg2" viewBox="0 0 500 500" preserveAspectRatio="xMidYMid meet"></svg>
+    <div id="svg_container" class="d-block p-2 m-4 bg-secondary rounded" style="width:50%;height:50%;">
+      <svg id="diagram" viewBox="0 0 500 500" preserveAspectRatio="xMidYMid meet" data-project-id="{{ project.id }}"></svg>
     </div>
   </div>
+  </section>
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <script src="/js/drawProjectDiagram.js"></script>

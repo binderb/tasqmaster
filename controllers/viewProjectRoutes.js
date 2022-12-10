@@ -5,8 +5,14 @@ const { getNestedTasks } = require('./helpers');
 
 router.get('/:id', async (req, res) => {
   try {
-
-    res.render('singleProject');
+    const projectData = await Project.findByPk(req.params.id, {
+      include: [{model: User}]
+    });
+    const project = projectData.get({plain:true});
+    console.log(project);
+    res.render('singleProject', {
+      project
+    });
     
 
   } catch (err) {
