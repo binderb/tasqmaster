@@ -13,11 +13,24 @@
         </div>
       </section>
       <section id="section-details" class="col-12 col-md-5 col-lg-4 p-2 py-1 ps-md-1 py-md-0">
-        <div id="task-details" class="d-block p-2 bg-dark-glass rounded text-white">
-          <h4 id="task-title" class="p-0 m-0">{{project.title}}</h4>
-          <div class="p-2">
-            <p id="task-description-label"><b>Description:</b></p>
-            <p id="task-description"><b>{{project.description}}</b></p>
+        <div id="details" class="d-block p-2 bg-dark-glass rounded text-white">
+          <div id="project-details" class="p-2">
+            <h4 id="project-title" class="p-0 m-0 mb-3">{{project.title}}</h4>
+            <label for="project-description"><b>Project Description:</b></label>
+            <p id="project-description">{{project.description}}</p>
+          </div>
+          <div id="task-details" class="p-2" style="display:none;">
+            <h4 id="task-title" class="p-0 m-0"></h4>
+            <p><small id="task-author"></small></p>
+            <label for="task-description"><b>Description:</b></label>
+            <p id="task-description"></p>
+            <label for="task-label"><b>Label:</b></label>
+            <p id="task-label"><b></b></p>
+            <label for="task-status"><b>Status:</b></label>
+            <p id="task-status"><b></b></p>
+            <label for="task-assignee"><b>Assigned To:</b></label>
+            <p id="task-assignee"><b></b></p>
+
           </div>
         </div>
       </section>

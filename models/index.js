@@ -5,20 +5,24 @@ const ProjectUser = require('./ProjectUser');
 
 User.hasMany(Task, {
   foreignKey: 'user_id',
+  as: 'author',
   onDelete: 'SET NULL'
 });
 
 User.hasMany(Task, {
   foreignKey: 'assignee_id',
+  as: 'assignee',
   onDelete: 'SET NULL'
 });
 
 Task.belongsTo(User, {
-  foreignKey: 'user_id'
+  foreignKey: 'user_id',
+  as: 'author'
 });
 
 Task.belongsTo(User, {
-  foreignKey: 'assignee_id'
+  foreignKey: 'assignee_id',
+  as: 'assignee'
 });
 
 Project.hasMany(Task, {

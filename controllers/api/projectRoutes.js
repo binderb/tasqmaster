@@ -14,7 +14,7 @@ router.get('/:id', async (req, res) => {
     {title:project.title, id:null}, 
     project.id
   );
-  
+  // res.status(200).json(project);
   res.status(200).json(allTasks);
 
 });

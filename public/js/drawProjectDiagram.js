@@ -41,6 +41,12 @@ async function drawGraph(svgEl,projectID) {
       // } else {
       //   d3.event.stopPropagation();
       // }
+      if (!d.parent) {
+        zoom(d);
+        helpers.displayProjectDetails();
+        d3.event.stopPropagation();
+        return;
+      }
       if (d.children) {
         zoom(d);
         helpers.displayTaskDetails(d.data);
@@ -63,6 +69,7 @@ async function drawGraph(svgEl,projectID) {
 
   svg.style("background", null).on("click", function(d) { 
     zoom(root);
+    helpers.displayProjectDetails();
   });
 
   zoomTo([root.x, root.y, root.r * 2 + margin]);

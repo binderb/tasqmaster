@@ -1,4 +1,4 @@
-const { Task } = require('../models');
+const { Task, User } = require('../models');
 
 const getNestedTasks = async (task,project) => {
   let subTasks = await Task.findAll({
@@ -6,7 +6,18 @@ const getNestedTasks = async (task,project) => {
           parent_id: task.id,
           project_id: project
       },
-      raw : true
+      include: [
+        {
+          model: User,
+          as: 'author'
+        },
+        {
+          model: User,
+          as: 'assignee'
+        }
+      ],
+      raw : true,
+      nest: true
   });
 
   let radius = Math.floor(100+Math.random()*400);

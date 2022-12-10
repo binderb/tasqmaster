@@ -1,11 +1,14 @@
 [
   {
-    "title": "Tasqmaster"
+    "title": "Tasqmaster",
+    "description" : "This is an example project with several levels of depth, which mirrors our project structure and is used for testing. How meta!"
   },
   {
-    "title": "Blog"
+    "title": "Blog",
+    "description" : "This is a simple project designed for testing more rudimentary views."
   },
   {
-    "title": "Home Server"
+    "title": "Home Server",
+    "description" : "This is a simple project used for testing."
   }
 ]
