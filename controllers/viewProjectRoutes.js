@@ -9,7 +9,6 @@ router.get('/:id', async (req, res) => {
       include: [{model: User}]
     });
     const project = projectData.get({plain:true});
-    console.log(project);
     res.render('singleProject', {
       project
     });

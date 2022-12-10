@@ -1,77 +1,64 @@
-body {
-    padding: 0%;
-    margin: 0%;
-    background-image: url("./water.jpeg");
-    background-size: cover;
-  }
+:root {
+  --dark-glass: #555555AA;
+}
 
+body {
+  padding: 0%;
+  margin: 0%;
+  background-image: url("./water.jpeg");
+  background-size: cover;
+}
+
+.bg-dark-glass {
+  background-color: var(--dark-glass);
+}
 
 #header {
-    background-color: rgb(29, 28, 28);
-    margin: 0;
-    padding: 10px;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    
+  background-color: rgb(29, 28, 28);
+  margin: 0;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
 }
 
 .headertext {
-    color: rgb(255, 255, 255);
-
+  color: rgb(255, 255, 255);
 }
-
-
-
 
 #headerlinks {
-   float: right;
-   font-weight: bolder;
-   padding-right: 50px;
-   padding-bottom: 20px;
- 
+  float: right;
+  font-weight: bolder;
+  padding-right: 50px;
+  padding-bottom: 20px;
 }
 
-aside { 
-    margin: 0 10px 0px 0;  
-    float: left;
-    text-align: left;
-    font-size: 12pt;
-    
+aside {
+  margin: 0 10px 0px 0;
+  float: left;
+  text-align: left;
+  font-size: 12pt;
 }
-
- h3{
-    color:white;
-    padding-left: 40%;
- }
 
 li {
-    padding-bottom: 10px;
+  padding-bottom: 10px;
 }
-
-
-
 
 #Tasks {
-    padding-top: 40px;
-    justify-content: center;
+  padding-top: 40px;
+  justify-content: center;
 }
-
-
-
 
 #Tables1 {
-    padding-right: 80px;
+  padding-right: 80px;
 
-		float: left;
-
-
+  float: left;
 }
 #Tables2 {
-    width: 900px;
-    border-left: solid thin black;
-    float: left;
-    padding-left: 3%;
+  width: 900px;
+  border-left: solid thin black;
+  float: left;
+  padding-left: 3%;
 }
 
 /* ---------------------------------------
@@ -79,26 +66,34 @@ Styles for D3 Display
 ----------------------------------------*/
 
 .node {
-    cursor: pointer;
-  }
-  
-  .node:hover {
-    stroke: #000;
-    stroke-width: 1.5px;
-  }
-  
-  .node--leaf {
-    fill: white;
-  }
-  
-  .label {
-    font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-anchor: middle;
-    text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
-  }
-  
-  .label,
-  .node--root,
-  .node--leaf {
-    pointer-events: none;
-  }
+  cursor: pointer;
+}
+
+.node:hover {
+  stroke: white;
+  stroke-width: 1.5px;
+}
+
+.node.disabled {
+  pointer-events: none;
+}
+
+.node--leaf {
+  fill: white;
+}
+
+.node--leaf:hover {
+  stroke: none;
+  fill: white;
+}
+
+.label {
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-anchor: middle;
+  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+}
+
+.label,
+.node--root {
+  pointer-events: none;
+}
