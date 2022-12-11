@@ -70,6 +70,46 @@
     "project_id": 1
   },
   {
+    "title": "id",
+    "description": "User id.",
+    "parent_id": 6,
+    "user_id": 1,
+    "assignee_id": null,
+    "status": "in progress",
+    "label": "mvp",
+    "project_id": 1
+  },
+  {
+    "title": "username",
+    "description": "User's username.",
+    "parent_id": 6,
+    "user_id": 1,
+    "assignee_id": null,
+    "status": "in progress",
+    "label": "mvp",
+    "project_id": 1
+  },
+  {
+    "title": "email",
+    "description": "User's email.",
+    "parent_id": 6,
+    "user_id": 1,
+    "assignee_id": null,
+    "status": "in progress",
+    "label": "mvp",
+    "project_id": 1
+  },
+  {
+    "title": "password",
+    "description": "User's password. Needs to be hashed.",
+    "parent_id": 6,
+    "user_id": 1,
+    "assignee_id": null,
+    "status": "in progress",
+    "label": "mvp",
+    "project_id": 1
+  },
+  {
     "title": "model",
     "description": "This is a description of our model.",
     "parent_id": null,
