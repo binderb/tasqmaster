@@ -11,16 +11,20 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div id="header">
-    <a href="" class="headertext">
-      <h1>Tasqmaster</h1>
-    </a>
-  </div>
-  <main>
-    {{{ body }}}
-  </main>
-  <footer>
-  </footer>
+    <div id="header">
+        <a href="" class="headertext">
+            <h1>Tasqmaster</h1>
+            {{#if logged_in}}
+              <span class="pr-2 text-white">Logged in as: <b>{{username}}</b></span><a id="logout" class="nav-link d-inline-block px-2" href="">Logout</a>
+            {{/if}}
+        </a>
+    </div>
+
+      <!-- Render the sub layout -->
+      {{{ body }}}
+    </main>
+    <footer>
+    </footer>
   </div>
 </body>
 </html>

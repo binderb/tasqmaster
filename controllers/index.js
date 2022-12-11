@@ -1,5 +1,4 @@
 const router = require('express').Router();
-
 const apiRoutes = require('./api');
 const viewMainRoutes = require('./viewMainRoutes');
 const viewProjectRoutes = require('./viewProjectRoutes');
