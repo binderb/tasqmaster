@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Project, User, Task } = require('../models');
-const withAuth = require('../utils/auth');
+const { withAuthView } = require('../utils/auth');
 const { getNestedTasks } = require('./helpers');
 
 // Display single project
@@ -16,8 +16,10 @@ router.get('/:id', async (req, res) => {
 
     // Render the page.
     res.render('singleProject', {
-      ...project,
-      loggedIn: req.session.loggedIn
+      project,
+      loggedIn: req.session.loggedIn,
+      username: req.session.username,
+      userID: req.session.userID
     });
     
 
