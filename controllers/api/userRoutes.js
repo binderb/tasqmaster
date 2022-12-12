@@ -5,8 +5,8 @@ const { withAuthAPI } = require('../../utils/auth');
 // Create 1 user
 router.post('/', async (req, res) => {
   try {
-    if (!req.body.username || !req.body.password) {
-      res.status(403).json({message: 'You must supply a username and password!'});
+    if (!req.body.username || !req.body.email || !req.body.password) {
+      res.status(403).json({message: 'You must supply a username, email, and password!'});
       return;
     }
     const newUserData = await User.create(req.body);
@@ -21,7 +21,13 @@ router.post('/', async (req, res) => {
     if (err.name === 'SequelizeUniqueConstraintError') {
       res.status(403).json({message: 'Username already exists! Please try a different one.'});
     } else if (err.name === 'SequelizeValidationError') {
-      res.status(403).json({message: 'Your password must be at least 8 characters long!'});
+      if (err.message.includes('Validation error: Validation isEmail on email failed')) {
+        res.status(403).json({message: 'You must provide a valid email address!'});
+      } else if (err.message.includes('Validation error: Validation len on password failed')) {
+        res.status(403).json({message: 'Your password must be at least 8 characters long!'});
+      } else {
+        res.status(403).json({message: err.message});
+      }
     } else {
       res.status(500).json({message: `Internal Server Error: ${err.name}`});
     }
