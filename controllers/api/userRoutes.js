@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 const { withAuthAPI } = require('../../utils/auth');
+const sequelize = require('../../config/connection');
 
 // Create 1 user
 router.post('/', async (req, res) => {
@@ -31,6 +32,24 @@ router.post('/', async (req, res) => {
     } else {
       res.status(500).json({message: `Internal Server Error: ${err.name}`});
     }
+  }
+});
+
+// Get user list except self
+router.get('/other', withAuthAPI, async (req, res) => {
+  try {
+    const otherUserData = await User.
+    findAll({
+      where: {
+        id: {
+          [sequelize.Op.not]: req.session.user_id
+        }
+      },
+      attributes: { exclude: ['password'] }
+    });
+    res.status(200).json(otherUserData);
+  } catch (err) {
+    res.status(500).json({message: `Internal Server Error: ${err.name}: ${err.message}.`});
   }
 });
 

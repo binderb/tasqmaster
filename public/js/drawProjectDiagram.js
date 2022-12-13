@@ -52,6 +52,10 @@ async function drawGraph(svgEl,projectID) {
         helpers.displayTaskDetails(d.data);
         d3.event.stopPropagation();
       } else {
+        // focus = d;
+        // g.selectAll("circle")
+        //   .attr('class', d => pickClasses(d, focus));
+        // pickClasses(d, focus);
         helpers.displayTaskDetails(d.data);
         d3.event.stopPropagation();
       }
@@ -135,7 +139,7 @@ function pickClasses (d, focus) {
     .interpolate(d3.interpolateHcl);
 
   let nodeClass;
-  if (focus.children.includes(d) || focus.parent === d) {
+  if (focus.children && (focus.children.includes(d) || focus.parent === d)) {
     nodeClass = 'node';
   } else if (d === focus) {
     nodeClass = 'node selected';
