@@ -107,14 +107,19 @@ Styles for D3 Display
 }
 
 
-/* Dashboard.html CSS */
+/* Dashboard.handlebars CSS */
 
-#dashboardProjects {
-  border: white;
-  background-color: aqua;
-  border-top-left-radius: 10px;
-}
-.Button3{
-  padding-bottom: 10px;
 
+
+.card-title{
+  color: white;
+  font-weight: bold;
 }
+
+.card-text{
+  color: white;
+
+  
+}
+
+
