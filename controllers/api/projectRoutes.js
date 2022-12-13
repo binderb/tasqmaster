@@ -28,6 +28,40 @@ router.post('/', withAuthAPI, async (req, res) => {
   }
 });
 
+// Get all projects
+router.get('/', async (req, res) => {
+  try {
+    const allProjectsData = await Project.findAll({
+      include: [{model: User}]
+    });
+    const allProjects = allProjectsData.map(e => e.get({plain:true}));
+    res.status(200).json(allProjects);
+  } catch (err) {
+    res.status(500).json({message: `Internal Server Error: ${err.name}: ${err.message}.`});
+  }
+});
+
+// Get all projects belonging to a specific user
+router.get('/user/:id', async (req, res) => {
+  try {
+    const allProjectsData = await Project.findAll({
+      include: [
+        {
+          model: User,
+          where: {
+            id: req.params.id
+          },
+          required: false
+        }
+      ]
+    });
+    const allProjects = allProjectsData.map(e => e.get({plain:true}));
+    res.status(200).json(allProjects);
+  } catch (err) {
+    res.status(500).json({message: `Internal Server Error: ${err.name}: ${err.message}.`});
+  }
+});
+
 // Get 1 project (including all nested tasks)
 router.get('/:id', async (req, res) => {
   try {

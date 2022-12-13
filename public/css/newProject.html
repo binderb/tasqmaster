@@ -41,12 +41,24 @@
 {{/if}}
 
 
-<form>
-  <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname"><br>
-  <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname">
-</form>
+<div class="container-fluid bg-dark-glass rounded">
+  <div class="row p-2 justify-content-between align-items-center text-white">
+    <div class="row">
+      <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Project Name</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="please enter a project name">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Description</label>
+          <input type="form" class="form-control" id="exampleInput1" placeholder="please enter a description">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
 
