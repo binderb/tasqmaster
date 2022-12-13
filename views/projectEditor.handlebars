@@ -1,10 +1,10 @@
-<div class="row px-3 pt-3 justify-content-center">
+<div class="px-2 pt-3 justify-content-center">
   <a href="/dashboard" class="link-light px-3">&larr; Back</a>
 </div>
 <div class="container py-3">
   
   <div class="row p-2 justify-content-between align-items-center text-white bg-dark-glass rounded">
-    <div class="row">
+    <div class="row m-0">
       <form id="edit-form">
           <h2 class="fw-bold py-2">{{#if project}}Edit Project{{else}}New Project{{/if}}</h2>
           <p class="fw-bold">Project Name:</p>
@@ -12,7 +12,7 @@
             type="text"
             class="form-control mb-4"
             id="title"
-            placeholder="please enter a project name"
+            placeholder="Enter a project name"
             {{#if project}}
             value="{{project.title}}"
             {{/if}}
@@ -21,11 +21,33 @@
           <textarea 
             class="form-control mb-4"
             id="description"
-            placeholder="please enter a description"
+            placeholder="Enter a description"
             style="min-height:150px;"
           >{{#if project}}{{project.description}}{{/if}}</textarea>
+          <p class="fw-bold">Users with Access:</p>
+          <div id="user-box" class="border border-1 border-white rounded mb-3 p-2">
+            <div class="d-flex justify-content-star align-items-center">
+              <p class="fw-bold m-0 pe-2">Search:</p>
+              <input type="text" class="form-control d-inline-block" style="flex:1" placeholder="Search for a user"/></p>
+              <button id="add-user" class="btn btn-secondary ms-2">Add</button>
+            </div>
+            <div id="user-list" class="py-2">
+              {{#if project}}
+                {{#each project.users as |user|}}
+                <div class="p-2 my-2 bg-dark-glass d-flex justify-content-between align-items-center rounded">
+                  <p class="m-0" data-id="{{user.id}}">{{user.username}} {{#if (isMe ../userID user.id)}}<span class="text-light-grey">(me)</span>{{/if}}</p>
+                  {{#unless (isMe ../userID user.id)}}
+                  <button class="btn btn-danger fa-solid fa-trash-can remove-user"></button>
+                  {{/unless}}
+                </div>
+                {{/each}}
+              {{else}}
+              {{/if}}
+            </div> 
+          </div>
         <a id="submit" class="btn btn-secondary mb-3">{{#if project}}Update Project{{else}}Create New Project{{/if}}</a>
       </form>
     </div>
   </div>
 </div>
+<script src="/js/manageUserList.js"></script>

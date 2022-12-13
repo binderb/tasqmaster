@@ -1,13 +1,12 @@
 <div class="container-fluid p-2">
   <div class="row px-2 my-4 justify-content-center">
-    <h2 class="col-12 text-white fw-bold">
-      Tasks assigned to:
-      {{username}}
-    </h2>
+    <h4 class="col-12 text-white fw-bold">
+      My Tasks:
+    </h4>
   </div>
 </div>
-<div class="container-fluid p-4 pb-2 bg-light-grey">
-  <div class="row justify-content-center py-2">
+<div class="container-fluid p-2 bg-light-grey">
+  <div class="row justify-content-center py-2 px-2">
     <div class="col-12 d-flex justify-content-between align-items-center">
       <h4 class="fw-bold d-inline-block text-white">
         My Projects:
@@ -24,7 +23,7 @@
   class="container-fluid px-4 pb-4 bg-light-grey text-white"
 >
   <div class="row">
-
+    {{#if allProjects}}
     {{#each allProjects as |project|}}
       <div class="card bg-dark-glass m-2" style="width: 18rem;">
         <div class="card-body p-2 d-flex flex-column justify-content-between">
@@ -41,6 +40,9 @@
       </div>
 
     {{/each}}
+    {{else}}
+      <p class="text-white">No projects yet.</p>
+    {{/if}}
   </div>
 </div>
 {{#if allProjects}}

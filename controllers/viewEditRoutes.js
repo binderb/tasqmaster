@@ -21,8 +21,8 @@ router.get('/:id', withAuthView, async (req, res) => {
     // Check if the requested project exists
     if (!projectData) {
       res.status(404).render('404',{
-        logged_in: req.session.logged_in,
-        user_id: req.session.user_id,
+        loggedIn: req.session.loggedIn,
+        userID: req.session.userID,
         username: req.session.username
       });
       return;
@@ -35,10 +35,11 @@ router.get('/:id', withAuthView, async (req, res) => {
     }
     const render_obj = {
       project,
-      logged_in: req.session.logged_in,
-      user_id: req.session.user_id,
+      loggedIn: req.session.loggedIn,
+      userID: req.session.userID,
       username: req.session.username
     }
+    console.log('my user id: ',render_obj.userID);
     res.render('projectEditor', render_obj);
   } catch (err) {
     res.status(500).json({message: `Internal Server Error: ${err.name}: ${err.message}`});
