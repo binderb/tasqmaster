@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 const { withAuthAPI } = require('../../utils/auth');
-const sequelize = require('../../config/connection');
+const { Op } = require("sequelize");
 
 // Create 1 user
 router.post('/', async (req, res) => {
@@ -38,19 +38,35 @@ router.post('/', async (req, res) => {
 // Get user list except self
 router.get('/other', withAuthAPI, async (req, res) => {
   try {
-    const otherUserData = await User.
-    findAll({
+    const otherUserData = await User.findAll({
       where: {
         id: {
-          [sequelize.Op.not]: req.session.user_id
+          [Op.not]: 1
         }
       },
       attributes: { exclude: ['password'] }
     });
+    console.log(otherUserData);
     res.status(200).json(otherUserData);
   } catch (err) {
     res.status(500).json({message: `Internal Server Error: ${err.name}: ${err.message}.`});
   }
+});
+
+// Get 1 user by username
+router.get('/search', async (req, res) => {
+  console.log(req.query.name);
+  const matchData = await User.findOne({
+    where: {
+      username: req.query.name
+    }
+  });
+  console.log(matchData);
+  if (!matchData) {
+    res.status(404).json({message:'Username does not exist in the system!'});
+    return;
+  }
+  res.status(200).json(matchData);
 });
 
 // Log in user
