@@ -105,3 +105,16 @@ Styles for D3 Display
 .node--root {
   pointer-events: none;
 }
+
+
+/* Dashboard.html CSS */
+
+#dashboardProjects {
+  border: white;
+  background-color: aqua;
+  border-top-left-radius: 10px;
+}
+.Button3{
+  padding-bottom: 10px;
+
+}
