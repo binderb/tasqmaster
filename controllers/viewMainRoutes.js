@@ -24,10 +24,9 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/dashboard", async (req, res) => {
+router.get("/dashboard", withAuthView, async (req, res) => {
   // Get a list of all projects belonging to the logged in user
   try {
-    console.log(req.session.userID);
     const allProjectsData = await Project.findAll({
       where: {
         '$users.id$': req.session.userID,

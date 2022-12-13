@@ -45,17 +45,17 @@ router.get('/', async (req, res) => {
 router.get('/user/:id', async (req, res) => {
   try {
     const allProjectsData = await Project.findAll({
+      where: {
+        '$users.id$': req.params.id,
+      },
       include: [
         {
           model: User,
-          where: {
-            id: req.params.id
-          },
-          required: false
-        }
-      ]
+          required: false,
+        },
+      ],
     });
-    const allProjects = allProjectsData.map(e => e.get({plain:true}));
+    const allProjects = allProjectsData.map((e) => e.get({ plain: true }));
     res.status(200).json(allProjects);
   } catch (err) {
     res.status(500).json({message: `Internal Server Error: ${err.name}: ${err.message}.`});

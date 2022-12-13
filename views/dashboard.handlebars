@@ -33,35 +33,29 @@
     </div>
   </div>
 </div>
-<div id="post_container" class="container-fluid px-4 pb-4 bg-light-grey text-white" >
-<div class="row">
+<div
+  id="post_container"
+  class="container-fluid px-4 pb-4 bg-light-grey text-white"
+>
+  <div class="row">
 
- {{#each allProjects as |project|}}
- 
-  <div class="card bg-dark-glass " style="width: 18rem;">
-  
-  <div class="card-body p-2">
-  <h5 class="card-title">{{project.title}}</h5>
-  <p class="card-text">{{project.description}}</p>
- 
-  <span>
-          <a href="/projects/{{project.id}}" class="btn btn-primary">View</a>
-  </span>
+    {{#each allProjects as |project|}}
+      <div class="card bg-dark-glass m-2" style="width: 18rem;">
+        <div class="card-body p-2 d-flex flex-column justify-content-between">
+          <div>
+          <h5 class="card-title">{{project.title}}</h5>
+          <p class="card-text">{{project.description}}</p>
+          </div>
+          <div class="pt-4 pb-2">
+            <a href="/projects/{{project.id}}" class="btn btn-primary me-1">View</a>
+            <a href="/edit/{{project.id}}" class="btn btn-primary mx-1">Edit</a>
+            <a href="" class="btn btn-primary ms-1" data-id="{{project.id}}">delete</a>
+          </div>
+        </div>
+      </div>
 
-         <span>
-          <a href="/edit/{{project.id}}" class="btn btn-primary">Edit</a>
-        </span> 
-
-        <span>
-          <a href="" class="btn btn-primary">delete</a>
-        </span>
-       
+    {{/each}}
   </div>
-  </div>
-    
- 
-{{/each}}
- </div>
 </div>
 {{#if allProjects}}
   <script src="/assets/js/deleteProject.js"></script>
