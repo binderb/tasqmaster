@@ -93,9 +93,6 @@ router.delete('/:id', withAuthAPI, async (req, res) => {
       return;
     }
     const project = projectData.get({plain:true});
-    console.log(project.users);
-    const filtered_list = project.users.filter(e => e.id == req.session.userID);
-    console.log('list: ',filtered_list);
     if (project.users.filter(e => e.id == req.session.userID).length == 0) {
       res.status(403).json({message: 'You are trying to delete a project over which you do not have ownership.'});
       return;
