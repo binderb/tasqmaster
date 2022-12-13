@@ -112,16 +112,14 @@ Styles for D3 Display
 
 
 .card-title{
-  color: #444;
+  color: white;
   font-weight: bold;
 }
 
 .card-text{
-  color: #444;
+  color: white;
 
   
 }
-.btn btn-primary{
-  box-shadow: 30px;
 
-}
+

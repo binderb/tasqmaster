@@ -22,11 +22,13 @@
   </div>
 </div>
 <div id="post_container" class="container-fluid px-4 pb-4 bg-light-grey text-white" >
+<div class="row">
 
- <div class="card" style="width: 18rem;">
-  
-  <div class="card-body">
  {{#each allProjects as |project|}}
+ 
+  <div class="card bg-dark-glass " style="width: 18rem;">
+  
+  <div class="card-body p-2">
   <h5 class="card-title">{{project.title}}</h5>
   <p class="card-text">{{project.description}}</p>
  
@@ -42,11 +44,12 @@
           <a href="" class="btn btn-primary">delete</a>
         </span>
        
- </div>
+  </div>
+  </div>
+    
  
- </div>      
 {{/each}}
- 
+ </div>
 </div>
 <script src="/assets/js/helpers.js"></script>
 <script src="/assets/js/publish-post.js"></script>
