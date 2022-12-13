@@ -43,12 +43,21 @@
                 </div>
                 {{/each}}
               {{else}}
+                <div class="p-2 my-2 bg-dark-glass d-flex justify-content-between align-items-center rounded user-block" data-id="{{userID}}">
+                  <p class="m-0">{{username}} <span class="text-light-grey">(me)</span></p>
+                </div>
               {{/if}}
             </div> 
           </div>
-        <a id="submit" class="btn btn-secondary mb-3">{{#if project}}Update Project{{else}}Create New Project{{/if}}</a>
+        <a id="submit" class="btn btn-secondary mb-3" {{#if project}}data-id="{{project.id}}"{{/if}}>{{#if project}}Update Project{{else}}Create New Project{{/if}}</a>
       </form>
+      <div id="outer-err" class="text-light-danger mb-2"></div>
     </div>
   </div>
 </div>
 <script src="/js/manageUserList.js"></script>
+{{#if project}}
+<script src="/js/updateProject.js"></script>
+{{else}}
+<script src="/js/createProject.js"></script>
+{{/if}}

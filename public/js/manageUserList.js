@@ -9,7 +9,6 @@ const addUser = async (e) => {
     const existingUsers = [];
     const userBlocks = document.querySelectorAll('.user-block');
     userBlocks.forEach((el,i) => existingUsers.push(el.querySelector('p').textContent.split('(')[0].trim()));
-    console.log(existingUsers);
     if (existingUsers.includes(user.username)) {
       document.querySelector('#err').textContent = 'User already added to the list!';
       document.querySelector('#err').setAttribute('style','');
