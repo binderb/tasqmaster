@@ -1,6 +1,8 @@
+ <link rel="stylesheet" href="/public/css/style.css">
 <div class="container-fluid p-2">
   <div class="row px-2 my-4 justify-content-center">
     <h2 class="col-12 text-white fw-bold">
+     
       Tasks assigned to: {{username}}
     </h2>
   </div>
@@ -9,22 +11,34 @@
   <div class="row justify-content-center py-2">
     <div class="col-12 d-flex justify-content-between align-items-center">
       <h4 class="fw-bold d-inline-block text-white">
-          My Tasks:
+          My Projects:
       </h4>
       <div>
-        <button id="new_post" class="btn btn-secondary m-0" href=""><i class="fa-solid fa-plus"></i>&nbsp;Draft A New Task</button>
+        <button id="new_post" class="btn btn-secondary m-0" href="/new"><i class="fa-solid fa-plus"></i>&nbsp;Draft A New project <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+          </svg></button>
       </div>
     </div>
   </div>
 </div>
-<div id="post_container" class="container-fluid px-4 pb-4 bg-light-grey text-white">
-  {{#if posts}}
-  {{#each posts as |post|}}
-    {{>post post_all=false}}
-  {{/each}}
-  {{else}}
-  No Tasks Assigned Yet.
-  {{/if}}
+<div id="post_container" class="container-fluid px-4 pb-4 bg-light-grey text-white" >
+ 
+ {{#each allProjects as |project|}}
+  <h3>{{project.title}}</h3>
+  <p>{{project.description}}</p>
+ 
+  <span>
+          <a id="new_post" class="btn btn-secondary m-0 Button3" href="/projects/{{project.id}}">view</a>
+  </span>
+        <span> 
+        <a id="new_post" class="btn btn-secondary m-0 Button3"  href="/edit/{{project.id}}">edit</a>   
+        </span> 
+         <span>
+        <a id="new_post" class="btn btn-secondary m-0 Button3"  href="">delete</a>
+        </span>
+       
+{{/each}}
+ 
 </div>
 <script src="/assets/js/helpers.js"></script>
 <script src="/assets/js/publish-post.js"></script>
