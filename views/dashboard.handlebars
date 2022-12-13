@@ -33,37 +33,35 @@
     </div>
   </div>
 </div>
-<div
-  id="post_container"
-  class="container-fluid px-4 pb-4 bg-light-grey text-white"
->
+<div id="post_container" class="container-fluid px-4 pb-4 bg-light-grey text-white" >
+<div class="row">
 
-  {{#each allProjects as |project|}}
-    <h3>{{project.title}}</h3>
-    <p>{{project.description}}</p>
+ {{#each allProjects as |project|}}
+ 
+  <div class="card bg-dark-glass " style="width: 18rem;">
+  
+  <div class="card-body p-2">
+  <h5 class="card-title">{{project.title}}</h5>
+  <p class="card-text">{{project.description}}</p>
+ 
+  <span>
+          <a href="/projects/{{project.id}}" class="btn btn-primary">View</a>
+  </span>
 
-    <span>
-      <a
-        class="btn btn-secondary m-0 Button3 view"
-        href="/projects/{{project.id}}"
-      >view</a>
-    </span>
-    <span>
-      <a
-        class="btn btn-secondary m-0 Button3 edit"
-        href="/edit/{{project.id}}"
-      >edit</a>
-    </span>
-    <span>
-      <a
-        class="btn btn-secondary m-0 Button3 delete"
-        href=""
-        data-id="{{project.id}}"
-      >delete</a>
-    </span>
+         <span>
+          <a href="/edit/{{project.id}}" class="btn btn-primary">Edit</a>
+        </span> 
 
-  {{/each}}
-
+        <span>
+          <a href="" class="btn btn-primary">delete</a>
+        </span>
+       
+  </div>
+  </div>
+    
+ 
+{{/each}}
+ </div>
 </div>
 {{#if allProjects}}
   <script src="/assets/js/deleteProject.js"></script>
