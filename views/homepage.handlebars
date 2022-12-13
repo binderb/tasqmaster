@@ -1,17 +1,69 @@
-<div class="container-fluid p-2"></div>
-<div class="container-fluid p-4 pb-2 bg-light-grey">
-  <div class="row justify-content-center py-2">
-    <div class="col-12 d-flex justify-content-between align-items-center">
-      <h4 class="fw-bold d-inline-block text-white">All Tasqs</h4>
-    </div>
-  </div>
-</div>
-<div class="container-fluid px-4 pb-4 bg-light-grey">
-  {{#if posts}}
-  {{#each posts as |post|}}
-    {{>post post_all=true}}
-  {{/each}}
-  {{else}}
-  No tasks created or assigned yet.
-  {{/if}}
-</div>
+ <body id="page-top">
+
+
+        <header class="bg-none bg-gradient text-white">
+            <div class="container px-4 text-center">
+                <h1 class="fw-bolder">Welcome to our Tasqmaster</h1>
+                <p class="lead">Tasqmaster will be a task manager app that can serve as an alternative to other project organization/planning tools like GitHub Projects, Miro, Trello, etc...</p>
+            </div>
+        </header>
+
+        <section id="about">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center text-white">
+                    <div class="col-lg-8">
+                        <h2>About this page</h2>
+                        <p class="lead">TBD information about our website</p>
+                        <p class="lead"><b>Current Active Tasqs Below</b></p>
+                        <ul>
+                            {{#each allProjects as |project|}} 
+                                <li><a href = "/projects/{{project.id}}">{{project.title}}</a></li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-none" id="services">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center text-white">
+                    <div class="col-lg-8">
+                        <h2>What we can offer</h2>
+                        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center text-white">
+                    <div class="col-lg-8">
+                        <h2>Contact us</h2>
+    <div class="m-4 p-4 bg-blue-900 bg-opacity-75 text-center">
+      <h1 class="text-2xl font-bold"><u>Our Team</u></h1>
+      <div class="flex justify-around text-white flex-wrap">
+        <div class="p-1">
+            <a href ="https://github.com/binderb" class = "link-light">Ben Binder</a>
+          </div>
+        <div class="p-1">
+            <a href ="https://github.com/FleischmanJ88" class = "link-light">Jeff Fleischman</a>
+          </div>
+        <div class="p-1">
+            <a href ="https://github.com/WilliamHirschh" class = "link-light">William Hirsch</a>
+        </div>
+          <div class="p-1">
+            <a href ="https://github.com/Tvanmeveren" class = "link-light">Tyler Van Meveren</a>
+          </div>
+          </div>
+          </div>
+          
+          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
+        </section>
+        <footer class="py-5 bg-dark">
+            <div class="container px-4"><p class="m-0 text-center text-white">Copyright &copy; The Tasqmaster Project 2022</p></div>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/scripts.js"></script>
+    </body>
