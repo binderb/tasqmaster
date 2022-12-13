@@ -1,6 +1,5 @@
  <body id="page-top">
 
-
         <header class="bg-none bg-gradient text-white">
             <div class="container px-4 text-center">
                 <h1 class="fw-bolder">Welcome to our Tasqmaster</h1>
@@ -12,14 +11,12 @@
             <div class="container px-4">
                 <div class="row gx-4 justify-content-center text-white">
                     <div class="col-lg-8">
-                        <h2>About this page</h2>
-                        <p class="lead">TBD information about our website</p>
-                        <p class="lead"><b>Current Active Tasqs Below</b></p>
-                        <ul>
-                            {{#each allProjects as |project|}} 
-                                <li><a href = "/projects/{{project.id}}">{{project.title}}</a></li>
-                            {{/each}}
-                        </ul>
+                        <h2>Current Active Tasqs Below</h2>
+                                <ul class = "link-info">
+                                    {{#each allProjects as |project|}} 
+                                        <li><a href = "/projects/{{project.id}}" class = "link-info">{{project.title}}</a></li>
+                                    {{/each}}
+                                </ul>
                     </div>
                 </div>
             </div>
@@ -30,7 +27,8 @@
                 <div class="row gx-4 justify-content-center text-white">
                     <div class="col-lg-8">
                         <h2>What we can offer</h2>
-                        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
+                        <p class="leadd">Users will be able to login and create/view/edit/delete projects, as well as tasks within a project. Projects can have multiple users, a many-to-many relationship that will allow users to work on teams. Crucially, the task model will be hierarchical, so large project layouts can be created with many hierarchical layers of “sub-tasks”. <br>
+                         <p class="leadd">This is a useful paradigm when combined with the front-end, which will employ the D3.js library to render an interactive infographic based on packed circles. With this interface, users will be able to view the entire status of their project at a glance.</p>
                     </div>
                 </div>
             </div>
@@ -40,26 +38,27 @@
             <div class="container px-4">
                 <div class="row gx-4 justify-content-center text-white">
                     <div class="col-lg-8">
+
                         <h2>Contact us</h2>
     <div class="m-4 p-4 bg-blue-900 bg-opacity-75 text-center">
       <h1 class="text-2xl font-bold"><u>Our Team</u></h1>
       <div class="flex justify-around text-white flex-wrap">
         <div class="p-1">
-            <a href ="https://github.com/binderb" class = "link-light">Ben Binder</a>
+            <a href ="https://github.com/binderb" class = "link-info">Ben Binder</a>
           </div>
         <div class="p-1">
-            <a href ="https://github.com/FleischmanJ88" class = "link-light">Jeff Fleischman</a>
+            <a href ="https://github.com/FleischmanJ88" class = "link-info">Jeff Fleischman</a>
           </div>
         <div class="p-1">
-            <a href ="https://github.com/WilliamHirschh" class = "link-light">William Hirsch</a>
+            <a href ="https://github.com/WilliamHirschh" class = "link-info">William Hirsch</a>
         </div>
           <div class="p-1">
-            <a href ="https://github.com/Tvanmeveren" class = "link-light">Tyler Van Meveren</a>
+            <a href ="https://github.com/Tvanmeveren" class = "link-info">Tyler Van Meveren</a>
           </div>
           </div>
           </div>
           
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
+          <p class="leadd">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
         </section>
         <footer class="py-5 bg-dark">
             <div class="container px-4"><p class="m-0 text-center text-white">Copyright &copy; The Tasqmaster Project 2022</p></div>
