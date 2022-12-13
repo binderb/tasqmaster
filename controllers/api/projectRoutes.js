@@ -37,7 +37,7 @@ router.get('/', async (req, res) => {
     const allProjects = allProjectsData.map(e => e.get({plain:true}));
     res.status(200).json(allProjects);
   } catch (err) {
-    res.status(500).json({message: `Internal Server Error: ${err.name}: ${err.message}.`});
+    res.status(500).json({message: `Internal Server Error: ${err.name}: ${err.message}`});
   }
 });
 
@@ -58,7 +58,7 @@ router.get('/user/:id', async (req, res) => {
     const allProjects = allProjectsData.map((e) => e.get({ plain: true }));
     res.status(200).json(allProjects);
   } catch (err) {
-    res.status(500).json({message: `Internal Server Error: ${err.name}: ${err.message}.`});
+    res.status(500).json({message: `Internal Server Error: ${err.name}: ${err.message}`});
   }
 });
 
@@ -76,9 +76,40 @@ router.get('/:id', async (req, res) => {
     );
     res.status(200).json(allTasks);
   } catch (err) {
-    res.status(500).json({message: `Internal Server Error: ${err.name}: ${err.message}.`});
+    res.status(500).json({message: `Internal Server Error: ${err.name}: ${err.message}`});
   }
 
+});
+
+// Delete 1 project
+router.delete('/:id', withAuthAPI, async (req, res) => {
+  try {
+    // Make sure user is the author of the post
+    const projectData = await Project.findByPk(req.params.id, {
+      include: [{model: User}]
+    });
+    if (!projectData) {
+      res.status(404).json({message: 'Project with given ID not found!'});
+      return;
+    }
+    const project = projectData.get({plain:true});
+    console.log(project.users);
+    const filtered_list = project.users.filter(e => e.id == req.session.userID);
+    console.log('list: ',filtered_list);
+    if (project.users.filter(e => e.id == req.session.userID).length == 0) {
+      res.status(403).json({message: 'You are trying to delete a project over which you do not have ownership.'});
+      return;
+    }
+
+    await Project.destroy({
+      where: {id: req.params.id}
+    });
+
+    res.status(200).json({message: 'Project deleted successfully.'});
+  
+  } catch (err) {
+    res.status(500).json({message: `Internal Server Error: ${err.name}: ${err.message}`});
+  }
 });
 
 module.exports = router;

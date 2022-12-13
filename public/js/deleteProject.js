@@ -15,4 +15,4 @@ const deleteProject = async (e) => {
 }
 
 const deletes = document.querySelectorAll('.delete');
-deletes.forEach((el,i) => el.addEventListener('click',delete_comment));
+deletes.forEach((el,i) => el.addEventListener('click',deleteProject));

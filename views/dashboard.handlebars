@@ -47,9 +47,9 @@
           <p class="card-text">{{project.description}}</p>
           </div>
           <div class="pt-4 pb-2">
-            <a href="/projects/{{project.id}}" class="btn btn-primary me-1">View</a>
-            <a href="/edit/{{project.id}}" class="btn btn-primary mx-1">Edit</a>
-            <a href="" class="btn btn-primary ms-1" data-id="{{project.id}}">delete</a>
+            <a href="/projects/{{project.id}}" class="btn btn-secondary me-1">View</a>
+            <a href="/edit/{{project.id}}" class="btn btn-secondary mx-1">Edit</a>
+            <a href="" class="btn btn-secondary ms-1 delete" data-id="{{project.id}}">delete</a>
           </div>
         </div>
       </div>
@@ -58,5 +58,5 @@
   </div>
 </div>
 {{#if allProjects}}
-  <script src="/assets/js/deleteProject.js"></script>
+  <script src="/js/deleteProject.js"></script>
 {{/if}}
