@@ -39,7 +39,7 @@ router.get('/:id', withAuthView, async (req, res) => {
       userID: req.session.userID,
       username: req.session.username
     }
-    console.log('my user id: ',render_obj.userID);
+    // console.log('my user id: ',render_obj.userID);
     res.render('projectEditor', render_obj);
   } catch (err) {
     res.status(500).json({message: `Internal Server Error: ${err.name}: ${err.message}`});
