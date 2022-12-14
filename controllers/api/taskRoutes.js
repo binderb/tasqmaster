@@ -19,15 +19,13 @@ router.get('/:id', async (req, res) => {
 router.delete("/:id", withAuthAPI, async (req, res) => {
   try {
     // Make sure user is the author of the post
-    const TaskId = await Project.findByPk(req.params.id, {
-      include: [{ model: User }],
-    });
-    if (!TaskId) {
+    const taskData = await Task.findByPk(req.params.id);
+    if (!taskData) {
       res.status(404).json({ message: "Task with given ID not found!" });
       return;
     }
-    const project = TaskId.get({ plain: true });
-    if (project.users.filter((e) => e.id == req.session.userID).length == 0) {
+    const task = taskData.get({ plain: true });
+    if (task.user_id != req.session.userID) {
       res
         .status(403)
         .json({
@@ -37,7 +35,7 @@ router.delete("/:id", withAuthAPI, async (req, res) => {
       return;
     }
 
-    await Project.destroy({
+    await Task.destroy({
       where: { id: req.params.id },
     });
 

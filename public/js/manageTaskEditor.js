@@ -119,7 +119,23 @@ const updateTask = async () => {
   }
 }
 
+const deleteTask = async () => {
+  const task_id = document.querySelector('#edit-task').getAttribute('data-id');
+  const response = await fetch('/api/tasks/'+task_id, {
+    method: 'DELETE'
+  });
+  if (response.ok) {
+    document.location.reload();
+  } else if (response.status == 404) {
+    document.location.replace('/404');
+  } else {
+    const response_data = await response.json();
+    alert(response_data.message);
+  }
+}
+
 
 document.querySelector('#new-task').addEventListener('click', (e) => {showEditor(e,true)});
+document.querySelector('#delete-task').addEventListener('click', deleteTask);
 document.querySelector('#cancel-task').addEventListener('click', hideEditor);
 document.querySelector('#edit-task').addEventListener('click', (e) => {showEditor(e,false)});
