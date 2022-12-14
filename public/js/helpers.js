@@ -1,6 +1,7 @@
 const helpers = {
 
   displayTaskDetails : function (data) {
+    document.querySelector('#task-editor').setAttribute('style','display:none;');
     document.querySelector('#project-details').setAttribute('style','display:none;');
     document.querySelector('#task-details').setAttribute('style','display:block;');
     document.querySelector('#task-title').innerHTML = `${data.title}`;
@@ -16,6 +17,7 @@ const helpers = {
   displayProjectDetails : function () {
     document.querySelector('#project-details').setAttribute('style','display:block;');
     document.querySelector('#task-details').setAttribute('style','display:none;');
+    document.querySelector('#task-editor').setAttribute('style','display:none;');
   }
 
 }
