@@ -41,8 +41,8 @@ const addUser = async (e) => {
 const removeUser = (e) => {
   e.preventDefault();
   const userBlock = e.target.parentElement;
-  console.log(e.target);
-  console.log(userBlock);
+  // console.log(e.target);
+  // console.log(userBlock);
   userBlock.remove();
 }
 
