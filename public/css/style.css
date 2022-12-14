@@ -1,5 +1,6 @@
 :root {
-  --dark-glass: #555555aa;
+  --dark-glass: #555555AA;
+  --light-danger: #ffa1a1;
 }
 
 body {
@@ -12,6 +13,10 @@ body {
 
 .bg-dark-glass {
   background-color: var(--dark-glass);
+}
+
+.text-light-danger {
+  color: var(--light-danger);
 }
 
 #header {
@@ -106,8 +111,20 @@ Styles for D3 Display
   pointer-events: none;
 }
 
-.leadd {
-  text-indent: 20px;
-  font-size: 1.25rem;
-  font-weight: 300;
+
+/* Dashboard.handlebars CSS */
+
+
+
+.card-title{
+  color: white;
+  font-weight: bold;
 }
+
+.card-text{
+  color: white;
+
+  
+}
+
+
