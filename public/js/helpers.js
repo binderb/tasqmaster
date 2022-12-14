@@ -1,6 +1,7 @@
 const helpers = {
 
   displayTaskDetails : function (data) {
+    console.log('task details!');
     document.querySelector('#task-editor').setAttribute('style','display:none;');
     document.querySelector('#project-details').setAttribute('style','display:none;');
     document.querySelector('#task-details').setAttribute('style','display:block;');

@@ -4,6 +4,16 @@ const showEditor = async (e, isNew) => {
   document.querySelector('#task-editor').setAttribute('style','display:block;');
   document.querySelector('#delete-task').disabled = true;
   document.querySelector('#new-task').disabled = true;
+  for (child of Array.from(document.querySelector('#task-parent-editor').children)) {
+    if (child.value != 'null') {
+      console.log(child.textContent);
+      child.remove();
+    }
+
+  }
+  for (child of Array.from(document.querySelector('#task-assignee-editor').children)) {
+    if (child.value != 'null') child.remove();
+  }
 
   const project_id = document.querySelector('#project-title').getAttribute('data-id');
   const allTasksResponse = await fetch('/api/tasks/projects/'+project_id);
@@ -31,6 +41,7 @@ const hideEditor = (e) => {
   document.querySelector('#task-editor').setAttribute('style','display:none;');
   document.querySelector('#delete-task').disabled = true;
   document.querySelector('#new-task').disabled = false;
+  
 }
 
 const saveTask = async () => {
