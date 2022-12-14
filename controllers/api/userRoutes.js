@@ -46,7 +46,7 @@ router.get('/other', withAuthAPI, async (req, res) => {
       },
       attributes: { exclude: ['password'] }
     });
-    console.log(otherUserData);
+    // console.log(otherUserData);
     res.status(200).json(otherUserData);
   } catch (err) {
     res.status(500).json({message: `Internal Server Error: ${err.name}: ${err.message}.`});
@@ -55,13 +55,13 @@ router.get('/other', withAuthAPI, async (req, res) => {
 
 // Get 1 user by username
 router.get('/search', async (req, res) => {
-  console.log(req.query.name);
+  // console.log(req.query.name);
   const matchData = await User.findOne({
     where: {
       username: req.query.name
     }
   });
-  console.log(matchData);
+  // console.log(matchData);
   if (!matchData) {
     res.status(404).json({message:'Username does not exist in the system!'});
     return;

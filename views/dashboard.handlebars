@@ -12,8 +12,8 @@
         My Projects:
       </h4>
       <div>
-        <a id="new_post" class="btn btn-secondary m-0" href="/edit">
-        <i class="fa-solid fa-plus pe-2"></i>&nbsp;Draft A New project</a>
+        <a id="new_post" class="btn btn-dark m-0 text-info" href="/edit">
+        <i class="fa-solid fa-plus pe-2 text-info"></i>&nbsp;Draft A New project</a>
       </div>
     </div>
   </div>
@@ -32,9 +32,9 @@
           <p class="card-text">{{project.description}}</p>
           </div>
           <div class="pt-4 pb-2">
-            <a href="/projects/{{project.id}}" class="btn btn-secondary me-1">View</a>
-            <a href="/edit/{{project.id}}" class="btn btn-secondary mx-1">Edit</a>
-            <a href="" class="btn btn-secondary ms-1 delete" data-id="{{project.id}}">Delete</a>
+            <a href="/projects/{{project.id}}" class="btn btn-dark me-1 text-info">View</a>
+            <a href="/edit/{{project.id}}" class="btn btn-dark mx-1 text-info">Edit</a>
+            <a href="" class="btn btn-dark ms-1 delete text-info" data-id="{{project.id}}">Delete</a>
           </div>
         </div>
       </div>
