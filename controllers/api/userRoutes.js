@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Project } = require('../../models');
 const { withAuthAPI } = require('../../utils/auth');
 const { Op } = require("sequelize");
 
@@ -41,7 +41,7 @@ router.get('/other', withAuthAPI, async (req, res) => {
     const otherUserData = await User.findAll({
       where: {
         id: {
-          [Op.not]: 1
+          [Op.not]: req.session.userID
         }
       },
       attributes: { exclude: ['password'] }
@@ -67,6 +67,34 @@ router.get('/search', async (req, res) => {
     return;
   }
   res.status(200).json(matchData);
+});
+
+// Get an alphabetical list of owning users for 1 project
+router.get("/projects/:id", async (req, res) => {
+  try {
+    const allUsersData = await User.findAll({
+      where: {
+        '$projects.id$': req.params.id,
+      },
+      include: [
+        {
+          model: Project,
+          required: false,
+        },
+      ],
+      order: [["username", "ASC"]],
+    });
+    if (!allUsersData) {
+      res.status(404).json({ message: "Project ID not found!" });
+      return;
+    }
+    const allUsers = allUsersData.map((e) => e.get({ plain: true }));
+    res.status(200).json(allUsers);
+  } catch (err) {
+    res
+      .status(500)
+      .json({ message: `Internal Server Error: ${err.name}: ${err.message}` });
+  }
 });
 
 // Log in user

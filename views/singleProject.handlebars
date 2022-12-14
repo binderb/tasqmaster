@@ -44,34 +44,34 @@
           {{!-- Task Editor --}}
           <div id="task-editor" class="p-2" style="display:none;">
             <p class="fw-bold">Parent:</p>
-            <select id="task-parent" class="form-control mb-3">
+            <select id="task-parent-editor" class="form-control mb-3">
               <option value="null">(No Parent - Top Level)</option>
             </select>
             <p class="fw-bold">Title:</p>
-            <input id="task-title" type="text" class="form-control mb-3"/>
+            <input id="task-title-editor" type="text" class="form-control mb-3"/>
             <p class="fw-bold">Description:</p>
-            <textarea id="task-description" type="text" class="form-control mb-3" style="min-height:150px;"></textarea>
+            <textarea id="task-description-editor" type="text" class="form-control mb-3" style="min-height:150px;"></textarea>
             <p class="fw-bold">Label:</p>
-            <select id="task-label" class="form-control mb-3">
+            <select id="task-label-editor" class="form-control mb-3">
               <option value="mvp">MVP</option>
               <option value="enhancement">Enhancement</option>
               <option value="bugfix">Bugfix</option>
               <option value="docs">Docs</option>
             </select>
             <p class="fw-bold">Status:</p>
-            <select id="task-label" class="form-control mb-3">
+            <select id="task-status-editor" class="form-control mb-3">
               <option value="todo">To-Do</option>
               <option value="in progress">In Progress</option>
               <option value="done">Done</option>
               <option value="icebox">Icebox</option>
             </select>
             <p class="fw-bold">Assigned To:</p>
-            <select id="task-label" class="form-control mb-3">
+            <select id="task-assignee-editor" class="form-control mb-3">
               <option value="null">(None)</option>
             </select>
             <div id="button-box" class="d-flex justify-content-center">
               <button id="cancel-new-task" class="btn btn-secondary me-1" style="flex:1;">Cancel</button>
-              <button id="confirm-new-task" class="btn btn-success me-1" style="flex:1;">Create Task</button>
+              <button id="confirm-new-task" class="btn btn-success ms-1" style="flex:1;">Create Task</button>
             </div>
             <div id="err" class="text-light-danger py-2"></div>
           </div>

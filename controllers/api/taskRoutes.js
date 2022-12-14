@@ -3,6 +3,7 @@ const { Project, User, Task } = require("../../models");
 const { withAuthAPI } = require("../../utils/auth");
 const { getNestedTasks } = require("../helpers");
 
+// Delete 1 task
 router.delete("/:id", withAuthAPI, async (req, res) => {
   try {
     // Make sure user is the author of the post
@@ -43,7 +44,7 @@ router.get("/projects/:id", async (req, res) => {
       where: {
         project_id: req.params.id,
       },
-      order: [["title", "DESC"]],
+      order: [["title", "ASC"]],
     });
     if (!allTasksData) {
       res.status(404).json({ message: "Project ID not found!" });
@@ -58,30 +59,25 @@ router.get("/projects/:id", async (req, res) => {
   }
 });
 
+// Create 1 task
 router.post('/', withAuthAPI, async (req, res) => {
-    try {
-      if (!req.body.title) {
-        res.status(403).json({message: 'Your task title cannot be empty!'});
-        return;
-      } else if (!req.body.description) {
-        res.status(403).json({message: 'Your task description cannot be empty!'});
-        return;
-      } else if (!req.body.userList) {
-        res.status(403).json({message: 'You must give access to this task to at least 1 user!'});
-        return;
-      }
-      const new_task_data = await Project.create(req.body);
-      const task_user_body_array = req.body.userList.map(id => {
-        return {
-          task_id: new_task_data.id,
-          user_id: id
-        };
-      });
-      await TaskUser.bulkCreate(task_user_body_array);
-      res.status(201).json(new_task_data);
-    } catch (err) {
-      res.status(500).json({message: `Internal Server Error: ${err.name}: ${err.message}`});
+  try {
+    if (!req.body.title) {
+      res.status(403).json({message: 'Your task title cannot be empty!'});
+      return;
+    } else if (!req.body.description) {
+      res.status(403).json({message: 'Your task description cannot be empty!'});
+      return;
     }
-  })
+    const new_task_body = {
+      user_id: req.session.userID,
+      ...req.body
+    }
+    const new_task_data = await Task.create(new_task_body);
+    res.status(201).json(new_task_data);
+  } catch (err) {
+    res.status(500).json({message: `Internal Server Error: ${err.name}: ${err.message}`});
+  }
+});
 
 module.exports = router;
