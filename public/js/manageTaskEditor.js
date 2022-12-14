@@ -8,7 +8,7 @@ const showEditor = async (e, isNew) => {
   const project_id = document.querySelector('#project-title').getAttribute('data-id');
   const allTasksResponse = await fetch('/api/tasks/projects/'+project_id);
   const allTasks = await allTasksResponse.json();
-
+  console.log(allTasks);
 }
 
 const hideEditor = (e) => {
