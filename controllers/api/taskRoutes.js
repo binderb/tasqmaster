@@ -3,6 +3,18 @@ const { Project, User, Task } = require("../../models");
 const { withAuthAPI } = require("../../utils/auth");
 const { getNestedTasks } = require("../helpers");
 
+// Get 1 task
+router.get('/:id', async (req, res) => {
+  try {
+    const taskData = await Task.findByPk(req.params.id);
+    const task = taskData.get({plain:true});
+    res.status(200).json(task);
+  } catch (err) {
+    res.status(500).json({message: `Internal Server Error: ${err.name}: ${err.message}`});
+  }
+
+});
+
 // Delete 1 task
 router.delete("/:id", withAuthAPI, async (req, res) => {
   try {
@@ -80,6 +92,7 @@ router.post('/', withAuthAPI, async (req, res) => {
   }
 });
 
+// Update 1 task
 router.put('/:id', withAuthAPI, async (req, res) => {
   try {
     if (!req.body.title) {

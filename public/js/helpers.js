@@ -1,13 +1,13 @@
 const helpers = {
 
   displayTaskDetails : function (data) {
-    console.log('task details!');
     document.querySelector('#task-editor').setAttribute('style','display:none;');
     document.querySelector('#project-details').setAttribute('style','display:none;');
     document.querySelector('#task-details').setAttribute('style','display:block;');
     if (document.querySelector('#edit-controls')) {
       document.querySelector('#delete-task').disabled = false;
       document.querySelector('#new-task').disabled = false;
+      document.querySelector('#edit-task').setAttribute('data-id',data.id);
     }
     document.querySelector('#task-title').innerHTML = `${data.title}`;
     document.querySelector('#task-author').innerHTML = `authored by <b>${data.author.username}</b>`;

@@ -40,6 +40,11 @@
             <p id="task-status"><b></b></p>
             <label for="task-assignee"><b>Assigned To:</b></label>
             <p id="task-assignee"><b></b></p>
+            {{#if editPrivileges}}
+            <div>
+              <button id="edit-task" class="btn btn-secondary" data-id=""><i class="fa-solid fa-pencil pe-2"></i>Edit Details</button>
+            </div>
+            {{/if}}
           </div>
           {{!-- Task Editor --}}
           <div id="task-editor" class="p-2" style="display:none;">
@@ -70,8 +75,8 @@
               <option value="null">(None)</option>
             </select>
             <div id="button-box" class="d-flex justify-content-center">
-              <button id="cancel-new-task" class="btn btn-secondary me-1" style="flex:1;">Cancel</button>
-              <button id="confirm-new-task" class="btn btn-success ms-1" style="flex:1;">Create Task</button>
+              <button id="cancel-task" class="btn btn-secondary me-1" style="flex:1;">Cancel</button>
+              <button id="confirm-task" class="btn btn-success ms-1" style="flex:1;">Create Task</button>
             </div>
             <div id="err" class="text-light-danger py-2"></div>
           </div>
