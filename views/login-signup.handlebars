@@ -23,7 +23,7 @@
               <label for="password" class="form-label fw-bold link-info">Password:</label>
               <input type="password" class="form-control" id="password">
               {{#unless showLogin}}
-              <div id="password_help" class="form-text text-white">Passwords must be at least 8 characters.</div>
+              <div id="password_help" class="form-text text-info">Passwords must be at least 8 characters.</div>
               {{/unless}}
             </div>
             {{#if showLogin}}
@@ -32,7 +32,7 @@
             </div>
             {{else}}
             <div class="mb-3">
-              Already have a profile? <a class="link-light" href="./login">Login here!</a>
+              Already have a profile? <a class="link-light text-info" href="./login">Login here!</a>
             </div>
             {{/if}}
             <div class="d-flex align-items-center">
