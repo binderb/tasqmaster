@@ -1,14 +1,14 @@
 <div class="container-fluid d-flex justify-content-center p-4">
   <div class="row col-12 col-sm-10 col-md-8">
     <div class="container-fluid bg-dark-glass rounded">
-      <div class="row p-2 justify-content-between align-items-center text-white">
+      <div class="row p-2 justify-content-between align-items-center text-info">
         <div class="col-12 fs-5 fw-bold">
           {{#if showLogin}} Login {{ else }} Sign Up {{/if}}
         </div>
       </div>
       <div class="row">
         <div class="col-12 p-4 pt-1">
-          <form class="text-white" id="login-signup-form">
+          <form class="text-info" id="login-signup-form">
             <div class="mb-3">
               <label for="username" class="form-label fw-bold">Username:</label>
               <input type="text" class="form-control" id="username">
@@ -20,7 +20,7 @@
             </div>
             {{/unless}}
             <div class="mb-3">
-              <label for="password" class="form-label fw-bold">Password:</label>
+              <label for="password" class="form-label fw-bold link-info">Password:</label>
               <input type="password" class="form-control" id="password">
               {{#unless showLogin}}
               <div id="password_help" class="form-text text-white">Passwords must be at least 8 characters.</div>
@@ -28,7 +28,7 @@
             </div>
             {{#if showLogin}}
             <div class="mb-3">
-              First time here? <a class="link-light" href="./signup">Sign up!</a>
+              First time here? <a class="text-info" href="./signup">Sign up!</a>
             </div>
             {{else}}
             <div class="mb-3">
