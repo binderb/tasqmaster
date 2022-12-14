@@ -29,7 +29,7 @@ router.get("/dashboard", withAuthView, async (req, res) => {
   try {
     const allProjectsData = await Project.findAll({
       where: {
-        '$users.id$': req.session.userID,
+        "$users.id$": req.session.userID,
       },
       include: [
         {

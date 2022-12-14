@@ -3,7 +3,7 @@
     <div class="container-fluid bg-dark-glass rounded">
       <div class="row p-2 justify-content-between align-items-center text-info">
         <div class="col-12 fs-5 fw-bold">
-          {{#if showLogin}} Login {{ else }} Sign Up {{/if}}
+          {{#if showLogin}} Login {{else}} Sign Up {{/if}}
         </div>
       </div>
       <div class="row">
@@ -11,33 +11,46 @@
           <form class="text-info" id="login-signup-form">
             <div class="mb-3">
               <label for="username" class="form-label fw-bold">Username:</label>
-              <input type="text" class="form-control" id="username">
+              <input type="text" class="form-control" id="username" />
             </div>
             {{#unless showLogin}}
-            <div class="mb-3">
-              <label for="email" class="form-label fw-bold">Email:</label>
-              <input type="text" class="form-control" id="email">
-            </div>
+              <div class="mb-3">
+                <label for="email" class="form-label fw-bold">Email:</label>
+                <input type="text" class="form-control" id="email" />
+              </div>
             {{/unless}}
             <div class="mb-3">
-              <label for="password" class="form-label fw-bold link-info">Password:</label>
-              <input type="password" class="form-control" id="password">
+              <label
+                for="password"
+                class="form-label fw-bold link-info"
+              >Password:</label>
+              <input type="password" class="form-control" id="password" />
               {{#unless showLogin}}
-              <div id="password_help" class="form-text text-info">Passwords must be at least 8 characters.</div>
+                <div id="password_help" class="form-text text-info">Passwords
+                  must be at least 8 characters.</div>
               {{/unless}}
             </div>
             {{#if showLogin}}
-            <div class="mb-3">
-              First time here? <a class="text-info" href="./signup">Sign up!</a>
-            </div>
+              <div class="mb-3">
+                First time here?
+                <a class="text-info" href="./signup">Sign up!</a>
+              </div>
             {{else}}
-            <div class="mb-3">
-              Already have a profile? <a class="link-light text-info" href="./login">Login here!</a>
-            </div>
+              <div class="mb-3">
+                Already have a profile?
+                <a class="link-light text-info" href="./login">Login here!</a>
+              </div>
             {{/if}}
             <div class="d-flex align-items-center">
-              <button type="submit" id="submit" class="btn btn-dark">Submit</button>
-              <div id="err" class="p-2 m-0 form-text text-danger text-center"></div>
+              <button
+                type="submit"
+                id="submit"
+                class="btn btn-dark"
+              >Submit</button>
+              <div
+                id="err"
+                class="p-2 m-0 form-text text-danger text-center"
+              ></div>
             </div>
           </form>
         </div>
@@ -46,7 +59,7 @@
   </div>
 </div>
 {{#if showLogin}}
-<script src="/js/login.js"></script>
+  <script src="/js/login.js"></script>
 {{else}}
-<script src="/js/signup.js"></script>
+  <script src="/js/signup.js"></script>
 {{/if}}

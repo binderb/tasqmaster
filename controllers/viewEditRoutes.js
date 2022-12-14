@@ -4,45 +4,47 @@ const { withAuthView } = require("../utils/auth");
 const { getNestedTasks } = require("./helpers");
 
 // Display create new project page
-router.get('/', withAuthView, (req, res) => {
-  res.render('projectEditor', {
+router.get("/", withAuthView, (req, res) => {
+  res.render("projectEditor", {
     loggedIn: req.session.loggedIn,
     username: req.session.username,
-    userID: req.session.userID
-  })
+    userID: req.session.userID,
+  });
 });
 
 // Display edit existing project page
-router.get('/:id', withAuthView, async (req, res) => {
+router.get("/:id", withAuthView, async (req, res) => {
   try {
     const projectData = await Project.findByPk(req.params.id, {
-      include: [{model:User}]
+      include: [{ model: User }],
     });
     // Check if the requested project exists
     if (!projectData) {
-      res.status(404).render('404',{
+      res.status(404).render("404", {
         loggedIn: req.session.loggedIn,
         userID: req.session.userID,
-        username: req.session.username
+        username: req.session.username,
       });
       return;
     }
-    const project = projectData.get({plain: true});
+    const project = projectData.get({ plain: true });
     // Make sure the user has ownership over this project
-    if (project.users.filter(e => e.id == req.session.userID).length == 0) {
-      res.status(403).redirect('/');
+    if (project.users.filter((e) => e.id == req.session.userID).length == 0) {
+      res.status(403).redirect("/");
       return;
     }
     const render_obj = {
       project,
       loggedIn: req.session.loggedIn,
       userID: req.session.userID,
-      username: req.session.username
-    }
+      username: req.session.username,
+    };
     // console.log('my user id: ',render_obj.userID);
-    res.render('projectEditor', render_obj);
+    res.render("projectEditor", render_obj);
   } catch (err) {
-    res.status(500).json({message: `Internal Server Error: ${err.name}: ${err.message}`});
+    res
+      .status(500)
+      .json({ message: `Internal Server Error: ${err.name}: ${err.message}` });
   }
 });
 
