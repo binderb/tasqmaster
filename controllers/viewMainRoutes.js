@@ -28,12 +28,12 @@ router.get("/dashboard", withAuthView, async (req, res) => {
   // Get a list of all projects belonging to the logged in user
   try {
     const allProjectsData = await Project.findAll({
+      where: {
+        '$users.id$': req.session.userID,
+      },
       include: [
         {
           model: User,
-          where: {
-            id: req.session.id,
-          },
           required: false,
         },
       ],

@@ -1,58 +1,50 @@
- <link rel="stylesheet" href="/public/css/style.css">
 <div class="container-fluid p-2">
   <div class="row px-2 my-4 justify-content-center">
-    <h2 class="col-12 text-white fw-bold">
-     
-      Tasks assigned to: {{username}}
-    </h2>
+    <h4 class="col-12 text-white fw-bold">
+      My Tasks:
+    </h4>
   </div>
 </div>
-<div class="container-fluid p-4 pb-2 bg-light-grey">
-  <div class="row justify-content-center py-2">
+<div class="container-fluid p-2 bg-light-grey">
+  <div class="row justify-content-center py-2 px-2">
     <div class="col-12 d-flex justify-content-between align-items-center">
       <h4 class="fw-bold d-inline-block text-white">
-          My Projects:
+        My Projects:
       </h4>
       <div>
-        <button id="new_post" class="btn btn-secondary m-0" href="/new"><i class="fa-solid fa-plus"></i>&nbsp;Draft A New project <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-          </svg></button>
+        <a id="new_post" class="btn btn-secondary m-0" href="/edit">
+        <i class="fa-solid fa-plus pe-2"></i>&nbsp;Draft A New project</a>
       </div>
     </div>
   </div>
 </div>
-<div id="post_container" class="container-fluid px-4 pb-4 bg-light-grey text-white" >
-<div class="row">
+<div
+  id="post_container"
+  class="container-fluid px-4 pb-4 bg-light-grey text-white"
+>
+  <div class="row">
+    {{#if allProjects}}
+    {{#each allProjects as |project|}}
+      <div class="card bg-dark-glass m-2" style="width: 18rem;">
+        <div class="card-body p-2 d-flex flex-column justify-content-between">
+          <div>
+          <h5 class="card-title">{{project.title}}</h5>
+          <p class="card-text">{{project.description}}</p>
+          </div>
+          <div class="pt-4 pb-2">
+            <a href="/projects/{{project.id}}" class="btn btn-secondary me-1">View</a>
+            <a href="/edit/{{project.id}}" class="btn btn-secondary mx-1">Edit</a>
+            <a href="" class="btn btn-secondary ms-1 delete" data-id="{{project.id}}">Delete</a>
+          </div>
+        </div>
+      </div>
 
- {{#each allProjects as |project|}}
- 
-  <div class="card bg-dark-glass " style="width: 18rem;">
-  
-  <div class="card-body p-2">
-  <h5 class="card-title">{{project.title}}</h5>
-  <p class="card-text">{{project.description}}</p>
- 
-  <span>
-          <a href="/projects/{{project.id}}" class="btn btn-primary">View</a>
-  </span>
-
-         <span>
-          <a href="/edit/{{project.id}}" class="btn btn-primary">Edit</a>
-        </span> 
-
-        <span>
-          <a href="" class="btn btn-primary">delete</a>
-        </span>
-       
+    {{/each}}
+    {{else}}
+      <p class="text-white">No projects yet.</p>
+    {{/if}}
   </div>
-  </div>
-    
- 
-{{/each}}
- </div>
 </div>
-<script src="/assets/js/helpers.js"></script>
-<script src="/assets/js/publish-post.js"></script>
-{{#if posts}}
-<script src="/assets/js/delete-post.js"></script>
+{{#if allProjects}}
+  <script src="/js/deleteProject.js"></script>
 {{/if}}

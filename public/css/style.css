@@ -1,5 +1,6 @@
 :root {
   --dark-glass: #555555AA;
+  --light-danger: #ffa1a1;
 }
 
 body {
@@ -12,6 +13,10 @@ body {
 
 .bg-dark-glass {
   background-color: var(--dark-glass);
+}
+
+.text-light-danger {
+  color: var(--light-danger);
 }
 
 #header {
