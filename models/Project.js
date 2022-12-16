@@ -17,7 +17,7 @@ Project.init(
     },
     description: {
       type: DataTypes.STRING,
-    }
+    },
   },
   {
     sequelize,

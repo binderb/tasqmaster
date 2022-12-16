@@ -1,5 +1,5 @@
 :root {
-  --dark-glass: #555555AA;
+  --dark-glass: #555555aa;
   --light-danger: #ffa1a1;
 }
 
@@ -112,29 +112,25 @@ Styles for D3 Display
   pointer-events: none;
 }
 
-
 /* Dashboard.handlebars CSS */
 
-
-
-.card-title{
+.card-title {
   color: white;
   font-weight: bold;
 }
 
-.card-text{
+.card-text {
   color: white;
-  
 }
 
-.card-text:first-letter{
-text-transform: capitalize;  
+.card-text:first-letter {
+  text-transform: capitalize;
 }
 
-.card-title:first-letter{
-  text-transform: capitalize;  
-  }
+.card-title:first-letter {
+  text-transform: capitalize;
+}
 
-  .task:first-letter{
-text-transform: capitalize;
-  }
+.task:first-letter {
+  text-transform: capitalize;
+}

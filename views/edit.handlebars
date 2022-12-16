@@ -1,0 +1,50 @@
+<div class="container-fluid p-0">
+  <div class="text-white row px-2 justify-content-center">
+    <a href="/dashboard" class="m-2 mb-0 d-block">&larr; Back</a>
+  </div>
+</div>
+<div class="container-fluid m-0 mt-2 py-4 px-0 bg-light-grey">
+  <div class="container-fluid m-0 p-4 bg-light">
+    <h2 class="col-12 text-white fw-bold">
+      Editing Post
+    </h2>
+    <div class="row justify-content-center py-2">
+      <form id="edit_form">
+        <p class="small-text m-0">Originally posted on
+          {{format_datetime created}}</p>
+        <p class="small-text">Last updated:
+          {{#if updated}}{{format_datetime updated}}{{else}}Never{{/if}}</p>
+        <p class="fw-bold">Title:</p>
+        <input
+          id="title-box"
+          type="text"
+          class="form-control mb-4"
+          value="{{title}}"
+        />
+        <p class="fw-bold">Content:</p>
+        <textarea
+          id="content-box"
+          class="form-control mb-4"
+          style="min-height:150px;"
+        >{{content}}</textarea>
+        <div id="link-box">
+          <a
+            id="cancel"
+            class="btn btn-secondary me-1"
+            href="/dashboard"
+          >Cancel</a>
+          <button
+            id="update"
+            class="btn btn-dark me-1"
+            data-post-id="{{id}}"
+          >Update Post</button>
+          <div
+            id="err"
+            class="p-2 m-0 form-text text-danger text-center d-inline-block"
+          ></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="/assets/js/edit-post.js"></script>

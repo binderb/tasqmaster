@@ -4,7 +4,7 @@ const { withAuthView } = require("../utils/auth");
 const { getNestedTasks } = require("./helpers");
 
 // Display single project view
-router.get('/:id', async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     // Get the project details.
     const projectData = await Project.findByPk(req.params.id, {

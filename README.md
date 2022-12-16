@@ -36,11 +36,11 @@ Group Project 2, we are tasked with creating a real-world full-stack application
 
 ## <strong>Criteria Met</strong>
 
-♦ TBD
+♦ Successfully integrated all reqested acceptance criteria into a working and functional Tasqmaster database
 
-♦ TBD
+♦ Prettier Compliant
 
-♦ TBD
+♦ Successful Heroku Launch
 
 ### <strong>Website Link</strong>
 
@@ -48,11 +48,11 @@ https://github.com/binderb/tasqmaster
 
 ### <strong>Screenshot</strong>
 
-TBD
+![Alt text](public/images/Tasqmaster_SS.png)
 
 ### <strong>Video Requirement</strong>
 
-TBD
+https://drive.google.com/file/d/1_pztXHNyWQDqWCLwuIeZae9V-lnq-Tr_/view
 
 ### <strong>Contact Information</strong>
 

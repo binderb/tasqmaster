@@ -1,6 +1,59 @@
-  <section id="project-display">
+<section id="project-display">
   <div class="container-fluid m-0 pb-4">
     <div class="row p-2">
+<<<<<<< HEAD
+      <div class="col-12 p-2 bg-dark-glass rounded task">
+        <h3 class="text-center text-white">{{project.title}}</h3>
+        <h5 class="text-center text-white fw-light">Task Diagram</h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <section
+      id="section-diagram"
+      class="col-12 col-md-7 p-2 py-1 pt-0 pe-md-1 py-md-0"
+    >
+      <div id="svg_container" class="d-block p-2 bg-dark-glass rounded">
+        <svg
+          id="diagram"
+          viewBox="0 0 500 500"
+          preserveAspectRatio="xMidYMid meet"
+          data-project-id="{{project.id}}"
+        ></svg>
+      </div>
+    </section>
+    <section
+      id="section-details"
+      class="col-12 col-md-5 p-2 py-1 ps-md-1 py-md-0"
+    >
+      <div id="details" class="d-block p-2 bg-dark-glass rounded text-white">
+        <div id="project-details" class="p-2">
+          <label for="project-description"><b>Project Description:</b></label>
+          <p id="project-description" class="task">{{project.description}}</p>
+        </div>
+        <div id="task-details" class="p-2" style="display:none;">
+          <h4 id="task-title" class="p-0 m-0"></h4>
+          <p><small id="task-author"></small></p>
+          <label for="task-description"><b>Description:</b></label>
+          <p id="task-description"></p>
+          <label for="task-label"><b>Label:</b></label>
+          <p id="task-label"><b></b></p>
+          <label for="task-status"><b>Status:</b></label>
+          <p id="task-status"><b></b></p>
+          <label for="task-assignee"><b>Assigned To:</b></label>
+          <p id="task-assignee"><b></b></p>
+        </div>
+      </div>
+
+    </section>
+  </div>
+</section>
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="/js/helpers.js"></script>
+<script src="/js/drawProjectDiagram.js"></script>
+=======
       <div class="col-12 p-2 bg-dark-glass rounded">
         <h3 id="project-title" class="text-center text-white" data-id="{{project.id}}">{{ project.title }}</h3>
         <h5 class="text-center text-white fw-light">Task Diagram</h5>
@@ -90,3 +143,4 @@
   {{#if editPrivileges}}
   <script src="/js/manageTaskEditor.js"></script>
   {{/if}}
+>>>>>>> 997a8d7ba5ac2971d54427ac8b7fa1a41aab1961
